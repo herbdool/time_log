@@ -1,0 +1,6 @@
+;
+name = Time Log
+package = Freeform Agile Tool
+description = Track time in a time log. Creates a time log content type with a timer widget.
+core = 6.x
+version = 6.x-1.x-dev

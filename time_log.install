@@ -1,0 +1,49 @@
+<?php
+
+ /**
+ * Time Log
+ * Adaptation of Support Timer module
+ **/
+
+/**
+ * task database schema definition.
+ */
+function time_log_schema() {
+  $schema['time_log'] = array(
+    'description' => 'Stores timer information about tasks.',
+    'fields' => array(
+      'nid' => array(
+        'type' => 'int',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+        'default' => 0,
+      ),
+      'time' => array(
+        'type' => 'varchar',
+        'length' => 255,
+        'not null' => TRUE,
+        'default' => '',
+      ),
+    ),
+    'primary key' => array('nid'),
+    array(),
+  );
+
+  return $schema;
+}
+
+/**
+ * Implementation of hook_install()
+ */
+function time_log_install() {
+  drupal_install_schema('time_log');
+}
+
+/**
+ * Implementation of hook_uninstall()
+ */
+function time_log_uninstall() {
+  drupal_uninstall_schema('time_log');
+	variable_del('time_log_unload_warning');
+	variable_del('time_log_start');
+}
